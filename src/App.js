@@ -2,16 +2,24 @@ import { useState } from "react";
 
 function App() {
 
-  const [compteur, setCompteur] = useState(1);
+  const [fruits, setFruits] = useState([
+    {id: 1, name: "Abricot"},
+    {id: 2, name: "Banane"},
+    {id: 3, name: "Cerise"}
+  ]);
 
-  const handleClick = () => {
+  const deleteFruit = (id) => {
     
   }
 
   return (
     <div>
-      <h1>{ compteur }</h1>
-      <button onClick={ handleClick }>Incrémente</button>
+      <h1>Liste de fruits</h1>
+        <ul>
+          { fruits.map((fruit) => {
+            return <li key={fruit.id}>{fruit.name} <button onClick={() => deleteFruit(fruit.id)}>X</button></li>
+          }) }
+        </ul>
     </div>
   )
 }
